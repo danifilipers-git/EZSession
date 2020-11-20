@@ -3,7 +3,7 @@
 const ezSession = require('...');
 ```
 
-# Get session by filter
+### Get session by filter
 ```javascript
 ezSession.getSession(field, content);
 ```
@@ -14,7 +14,7 @@ field - field to search
 content - content to be searched in that field
 ```
 
-## Create session - Multiple user sessions allowed
+### Create session - Multiple user sessions allowed
 ```javascript
 ezSession.createSession(username, expireTime, details);
 ```
@@ -26,7 +26,7 @@ expireTime - time in minutes that session lasts
 details - object with the extra details needed
 ```
 
-## End all sessions that match filter
+### End all sessions that match filter
 ```javascript
 ezSession.endSession(field, content);
 ```
@@ -37,5 +37,5 @@ field - field to search (field must belong to details property)
 content - content to be searched in that details field
 ```
 
-## More
+### More
 Every 30 minutes sessions are checked and deleted if expired
