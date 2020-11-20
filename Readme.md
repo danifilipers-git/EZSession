@@ -4,7 +4,7 @@ const ezSession = require('...');
 
 # Get session by filter
 ezSession.getSession(field, content);
-EXAMPLE: ezSession.getSession('username', 'xico');
+> EXAMPLE: ezSession.getSession('username', 'xico');
 
 ```
 field - field to search
@@ -13,7 +13,7 @@ content - content to be searched in that field
 
 ## Create session - Multiple user sessions allowed
 ezSession.createSession(username, expireTime, details);
-EXAMPLE: ezSession.createSession('xico', 30, { token: 'abcdx', socketId: '0000' });
+> EXAMPLE: ezSession.createSession('xico', 30, { token: 'abcdx', socketId: '0000' });
 
 ```
 username - user identifier
@@ -23,7 +23,7 @@ details - object with the extra details needed
 
 ## End all sessions that match filter
 ezSession.endSession(field, content);
-EXAMPLE: ezSession.endSession('token', 'abcdx');
+> EXAMPLE: ezSession.endSession('token', 'abcdx');
 
 ```
 field - field to search (field must belong to details property)
