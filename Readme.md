@@ -28,14 +28,13 @@ details - object with the extra details needed
 
 ### End all sessions that match filter
 ```javascript
-ezSession.endSession(field, content);
+ezSession.endSession(id);
 ```
-> EXAMPLE: ezSession.endSession('token', 'abcdx');
+> EXAMPLE: ezSession.endSession('123456');
 
 ```
-field - field to search (field must belong to details property)
-content - content to be searched in that details field
+id - session id generated on creation
 ```
 
 ### More
-Every 30 minutes sessions are checked and deleted if expired
+Sessions are deleted when expired

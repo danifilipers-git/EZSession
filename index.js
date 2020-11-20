@@ -1,10 +1,14 @@
 var ezSessions = [];
 
 class EZSession {
-    constructor(username, expireDate, details) {
+    constructor(username, expireTime, details) {
+        this.id = Date.now();
         this.username = username;
-        this.expireDate = expireDate;
         this.details = details;
+        setTimeout(() => {
+            endSession(this.id);
+            console.log(ezSessions);
+        }, expireTime);
     }
 }
 
@@ -30,8 +34,8 @@ function getSession(field, content) {
  */
 function createSession(username, expireTime, details) {
     var now = new Date();
-    var expireDate = new Date(now.getTime() + expireTime * 60000);
-    var session = new EZSession(username, expireDate, details);
+    var expireTime = expireTime * 60000;
+    var session = new EZSession(username, expireTime, details);
     ezSessions.push(session);
     return session;
 }
@@ -39,19 +43,16 @@ function createSession(username, expireTime, details) {
 /**
  * Delete a session
  * 
- * @param {*} field - field to be searched inside details. Example: 'token'
- * @param {*} content - content to be searched in that details field. Example: '12g434g53eaf15'
+ * @param {*} id - session id
  */
-function endSession(field, content) {
+function endSession(id) {
     oldLength = ezSessions.length;
-    ezSessions = ezSessions.filter(s => s.details[field] != content);
+    ezSessions = ezSessions.filter(s => s.id != id);
     return ezSessions.length === oldLength - 1 ? true : false;
 }
 
-setInterval(() => {
-    var now = new Date();
-    ezSessions = ezSessions.filter(s => s.expireDate > now);
-}, 60000 * 30);
+createSession('admin', 1, {});
+console.log(ezSessions);
 
 module.exports = {
     getSession,
